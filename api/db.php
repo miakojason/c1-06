@@ -21,10 +21,10 @@ class DB
     function save($array)
     {
         if (isset($array['id'])) {
-            $sql = "update `$this->table` set ";
             if (!empty($array)) {
+                $sql = "update `$this->table` set ";
                 $tmp = $this->a2s($array);
-                $sql .= join(",", $array);
+                $sql .= join(",", $tmp);
                 $sql .= " where `id` = '{$array['id']}'";
             }
         } else {
@@ -33,10 +33,11 @@ class DB
             $vals = "('" . join("','", $array) . "')";
             $sql .= $cols . "values" . $vals;
         }
+        return $this->pdo->exec($sql);
     }
     function del($id)
     {
-        $sql = "delete  `$this->table` where ";
+        $sql = "delete from `$this->table` where ";
         if (is_array($id)) {
             $tmp = $this->a2s($id);
             $sql .= join(" && ", $tmp);
