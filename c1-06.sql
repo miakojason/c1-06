@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-03-13 02:16:02
+-- 產生時間： 2024-03-13 03:34:21
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -56,6 +56,13 @@ CREATE TABLE `admin` (
   `pw` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- 傾印資料表的資料 `admin`
+--
+
+INSERT INTO `admin` (`id`, `acc`, `pw`) VALUES
+(1, 'admin', '1234');
+
 -- --------------------------------------------------------
 
 --
@@ -100,7 +107,7 @@ INSERT INTO `image` (`id`, `img`, `sh`) VALUES
 (7, '01D07.jpg', 1),
 (8, '01D08.jpg', 1),
 (9, '01D09.jpg', 1),
-(10, '01D010.jpg', 1);
+(10, '01D10.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -213,7 +220,7 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`) VALUES
-(1, 5000);
+(1, 5002);
 
 --
 -- 已傾印資料表的索引
@@ -287,7 +294,7 @@ ALTER TABLE `ad`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `bottom`
