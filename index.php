@@ -29,6 +29,30 @@
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+					$rows = $Menu->all(['menu_id' => 0, 'sh' => 1]);
+					foreach ($rows as $row) {
+					?>
+						<div class="mainmu"><a href="<?= $row['href']; ?>"><?= $row['text']; ?></a>
+							<?php
+							if ($Menu->count(['menu_id' => $row['id']]) > 0) {
+								$rows = $Menu->all(['menu_id' => $row['id']]);
+								foreach ($rows as $row) {
+							?>
+									<div class='mw' style="display: none;">
+										<div class="mainmu2">
+											<a href="<?= $row['href']; ?>"><?= $row['text']; ?></a>
+										</div>
+									</div>
+							<?php
+								}
+							}
+							?>
+						</div>
+					<?php
+					}
+					?>
+
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :<?= $Total->find(1)['total']; ?></span>
@@ -67,16 +91,16 @@
 					<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
 					<?php
 					$rows = $Image->all(['sh' => 1]);
-					foreach ($rows as $idx=>$row) {
+					foreach ($rows as $idx => $row) {
 					?>
-						<div class="im cent" id="ssaa<?=$idx; ?>"><img src="./img/<?=$row['img'];?>" style="width: 105px;height: 103px;"></div>
+						<div class="im cent" id="ssaa<?= $idx; ?>"><img src="./img/<?= $row['img']; ?>" style="width: 105px;height: 103px;"></div>
 					<?php
 					}
 					?>
 					<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
 					<script>
 						var nowpage = 0,
-							num = <?=$Image->count(['sh'=>1]);?>;
+							num = <?= $Image->count(['sh' => 1]); ?>;
 
 						function pp(x) {
 							var s, t;
