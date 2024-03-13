@@ -36,16 +36,20 @@
 						<div class="mainmu"><a href="<?= $row['href']; ?>"><?= $row['text']; ?></a>
 							<?php
 							if ($Menu->count(['menu_id' => $row['id']]) > 0) {
-								$rows = $Menu->all(['menu_id' => $row['id']]);
-								foreach ($rows as $row) {
 							?>
-									<div class='mw' style="display: none;">
+								<div class='mw' style="display: none;">
+									<?php
+									$rows = $Menu->all(['menu_id' => $row['id']]);
+									foreach ($rows as $row) {
+									?>
 										<div class="mainmu2">
 											<a href="<?= $row['href']; ?>"><?= $row['text']; ?></a>
 										</div>
-									</div>
+									<?php
+									}
+									?>
+								</div>
 							<?php
-								}
 							}
 							?>
 						</div>
